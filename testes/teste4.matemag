@@ -1,0 +1,11 @@
+FACA valor SER 1.
+SE valor ENTAO
+    MOSTRE valor.
+FIM
+FACA zero SER 0.
+SE zero ENTAO
+    MOSTRE zero.
+FIM
+SE 1 ENTAO
+    MOSTRE 100.
+FIM

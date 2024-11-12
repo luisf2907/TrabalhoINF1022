@@ -1,0 +1,17 @@
+FACA numero SER 1.
+SE numero ENTAO
+    MOSTRE 10.
+SENAO
+    MOSTRE 20.
+FIM
+FACA zero SER 0.
+SE zero ENTAO
+    MOSTRE 30.
+SENAO
+    MOSTRE 40.
+FIM
+SE 0 ENTAO
+    MOSTRE 50.
+SENAO
+    MOSTRE 60.
+FIM

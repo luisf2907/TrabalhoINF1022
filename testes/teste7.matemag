@@ -1,0 +1,8 @@
+FACA soma SER 0.
+FACA multiplicador SER 2.
+REPITA 3 VEZES:
+    SOME soma COM 5.
+    MULTIPLIQUE multiplicador POR 2.
+    MOSTRE soma.
+    MOSTRE multiplicador.
+FIM

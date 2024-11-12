@@ -1,0 +1,7 @@
+FACA x SER 1.
+REPITA 3 VEZES:
+    REPITA 2 VEZES:
+        SOME x COM 1.
+        MOSTRE x.
+    FIM
+FIM

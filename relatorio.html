@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>relatorio.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///home/luis-felipe/%C3%81rea%20de%20trabalho/SO/style.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="relat%C3%B3rio-final-compilador-da-linguagem-matem%C3%A1gica">Relatório Final: Compilador da Linguagem Matemágica</h1>
+<p><strong>Disciplina</strong>: INF1022 - 2024.2<br>
+<strong>Professores</strong>: Vitor Pinheiro e Edward Hermann
+<strong>Alunos</strong>: Luís Felipe Werneck (2111044) e David Wolff (2012428)</p>
+<h2 id="1-introdu%C3%A7%C3%A3o">1. Introdução</h2>
+<p>Este trabalho implementa um compilador para a linguagem Matemágica, convertendo código Matemágica em código C. O compilador foi desenvolvido utilizando Python com as bibliotecas PLY (Python Lex-Yacc) que implementa o método LALR(1).</p>
+<h2 id="2-gram%C3%A1tica">2. Gramática</h2>
+<h3 id="21-gram%C3%A1tica-original-do-pdf">2.1 Gramática Original (do PDF)</h3>
+<pre class="hljs"><code><div>programa → cmds
+cmds → cmd cmds | cmd
+cmd → atribuicao | impressao | operacao | repeticao
+atribuicao → FACA var SER num.
+impressao → MOSTRE var. | MOSTRE operacao.
+operacao → SOME var COM var. | SOME var COM num. | SOME num COM num.
+repeticao → REPITA num VEZES : cmds FIM
+</div></code></pre>
+<h3 id="22-gram%C3%A1tica-modificada">2.2 Gramática Modificada</h3>
+<pre class="hljs"><code><div>programa → cmds
+cmds → cmd cmds | cmd
+cmd → atribuicao | impressao | operacao | repeticao | condicional
+atribuicao → FACA var SER num DOT
+impressao → MOSTRE var DOT | MOSTRE num DOT | MOSTRE operacao DOT
+operacao → soma | multiplicacao
+soma → SOME var COM var DOT | SOME var COM num DOT | SOME num COM num DOT
+multiplicacao → MULTIPLIQUE var POR var DOT | MULTIPLIQUE var POR num DOT | MULTIPLIQUE num POR num DOT
+repeticao → REPITA num VEZES COLON cmds FIM
+condicional → SE var ENTAO cmds FIM | SE var ENTAO cmds SENAO cmds FIM | SE num ENTAO cmds FIM | SE num ENTAO cmds SENAO cmds FIM
+</div></code></pre>
+<h3 id="23-modifica%C3%A7%C3%B5es-da-gram%C3%A1tica">2.3 Modificações da Gramática</h3>
+<ol>
+<li>
+<p><strong>Adição de Multiplicação</strong>:</p>
+<ul>
+<li>Incluídas regras para multiplicação entre variáveis e números</li>
+<li>Formatos: <code>MULTIPLIQUE var POR var</code> e <code>MULTIPLIQUE var POR num</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Adição de Condicionais</strong>:</p>
+<ul>
+<li>Implementados comandos SE-ENTAO e SE-ENTAO-SENAO</li>
+<li>Incluído suporte para condicionais com números diretos além de variáveis</li>
+</ul>
+</li>
+<li>
+<p><strong>Extensão de Operações</strong>:</p>
+<ul>
+<li>Adicionado suporte para operações diretas entre números</li>
+<li>Incluída impressão do resultado de operações</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-implementa%C3%A7%C3%A3o">3. Implementação</h2>
+<h3 id="31-an%C3%A1lise-l%C3%A9xica">3.1 Análise Léxica</h3>
+<p>Os tokens definidos para a linguagem:</p>
+<pre class="hljs"><code><div>tokens = (
+    <span class="hljs-string">'FACA'</span>, <span class="hljs-string">'SER'</span>, <span class="hljs-string">'MOSTRE'</span>, <span class="hljs-string">'SOME'</span>, <span class="hljs-string">'COM'</span>, <span class="hljs-string">'REPITA'</span>, <span class="hljs-string">'VEZES'</span>, <span class="hljs-string">'SE'</span>, <span class="hljs-string">'ENTAO'</span>, 
+    <span class="hljs-string">'SENAO'</span>, <span class="hljs-string">'MULTIPLIQUE'</span>, <span class="hljs-string">'POR'</span>, <span class="hljs-string">'ID'</span>, <span class="hljs-string">'NUMBER'</span>, <span class="hljs-string">'DOT'</span>, <span class="hljs-string">'COLON'</span>, <span class="hljs-string">'FIM'</span>
+)
+</div></code></pre>
+<p>Expressões regulares para tokens especiais:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">t_ID</span><span class="hljs-params">(t)</span>:</span>
+    <span class="hljs-string">r'[a-zA-Z][a-zA-Z0-9]*'</span>  <span class="hljs-comment"># Permite letras seguidas de letras ou números</span>
+    t.type = reserved.get(t.value, <span class="hljs-string">'ID'</span>)
+    <span class="hljs-keyword">return</span> t
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">t_NUMBER</span><span class="hljs-params">(t)</span>:</span>
+    <span class="hljs-string">r'\d+'</span>  <span class="hljs-comment"># Números: apenas inteiros não-negativos</span>
+    t.value = int(t.value)
+    <span class="hljs-keyword">return</span> t
+</div></code></pre>
+<h3 id="32-an%C3%A1lise-sint%C3%A1tica">3.2 Análise Sintática</h3>
+<p>O analisador sintático foi implementado usando regras de produção que geram código C equivalente. Exemplo de regras:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">p_cmd_impressao_operacao_soma</span><span class="hljs-params">(p)</span>:</span>
+    <span class="hljs-string">'cmd : MOSTRE SOME ID COM ID DOT'</span>
+    <span class="hljs-keyword">global</span> resultado_operacao_usado
+    resultado_operacao_usado = <span class="hljs-literal">True</span>
+    p[<span class="hljs-number">0</span>] = <span class="hljs-string">f"    resultado_operacao = <span class="hljs-subst">{p[<span class="hljs-number">3</span>]}</span> + <span class="hljs-subst">{p[<span class="hljs-number">5</span>]}</span>;\n    printf(\"%d\\n\", resultado_operacao);\n"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">p_cmd_multiplicacao_var_var</span><span class="hljs-params">(p)</span>:</span>
+    <span class="hljs-string">'cmd : MULTIPLIQUE ID POR ID DOT'</span>
+    p[<span class="hljs-number">0</span>] = <span class="hljs-string">f"    <span class="hljs-subst">{p[<span class="hljs-number">2</span>]}</span> = <span class="hljs-subst">{p[<span class="hljs-number">2</span>]}</span> * <span class="hljs-subst">{p[<span class="hljs-number">4</span>]}</span>;\n"</span>
+</div></code></pre>
+<h2 id="4-casos-de-teste">4. Casos de Teste</h2>
+<h3 id="41-teste-de-atribui%C3%A7%C3%B5es-b%C3%A1sicas">4.1 Teste de Atribuições Básicas</h3>
+<pre class="hljs"><code><div>FACA a SER 10.
+FACA b SER 5.
+FACA resultado SER 0.
+MOSTRE a.
+MOSTRE b.
+MOSTRE resultado.
+</div></code></pre>
+<p>Saída C gerada:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">int</span> b = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">int</span> resultado = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, a);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, b);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, resultado);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="42-teste-de-opera%C3%A7%C3%B5es-de-soma">4.2 Teste de Operações de Soma</h3>
+<pre class="hljs"><code><div>FACA x SER 5.
+FACA y SER 3.
+SOME x COM y.
+MOSTRE x.
+SOME x COM 10.
+MOSTRE x.
+SOME 20 COM 30.
+MOSTRE x.
+</div></code></pre>
+<p>Saída C gerada:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> x = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">int</span> y = <span class="hljs-number">3</span>;
+    x = x + y;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, x);
+    x = x + <span class="hljs-number">10</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, x);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, <span class="hljs-number">50</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, x);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="43-teste-de-mostre-operacao">4.3 Teste de MOSTRE operacao</h3>
+<pre class="hljs"><code><div>FACA x SER 5.
+FACA y SER 3.
+MOSTRE SOME x COM y.
+FACA a SER 4.
+FACA b SER 2.
+MOSTRE MULTIPLIQUE a POR b.
+MOSTRE SOME 10 COM 20.
+MOSTRE MULTIPLIQUE 5 POR 3.
+MOSTRE SOME x COM 10.
+MOSTRE MULTIPLIQUE a POR 3.
+</div></code></pre>
+<p>Saída C gerada:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> resultado_operacao;
+    <span class="hljs-keyword">int</span> x = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">int</span> y = <span class="hljs-number">3</span>;
+    resultado_operacao = x + y;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, resultado_operacao);
+    <span class="hljs-keyword">int</span> a = <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span>;
+    resultado_operacao = a * b;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, resultado_operacao);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, <span class="hljs-number">30</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, <span class="hljs-number">15</span>);
+    resultado_operacao = x + <span class="hljs-number">10</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, resultado_operacao);
+    resultado_operacao = a * <span class="hljs-number">3</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, resultado_operacao);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="44-teste-de-condicionais-se-entao">4.4 Teste de Condicionais SE-ENTAO</h3>
+<pre class="hljs"><code><div>FACA valor SER 1.
+SE valor ENTAO
+    MOSTRE valor.
+FIM
+FACA zero SER 0.
+SE zero ENTAO
+    MOSTRE zero.
+FIM
+SE 1 ENTAO
+    MOSTRE 100.
+FIM
+</div></code></pre>
+<p>Saída C gerada:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> valor = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (valor != <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, valor);
+    }
+    <span class="hljs-keyword">int</span> zero = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (zero != <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, zero);
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-number">1</span> != <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, <span class="hljs-number">100</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="45-teste-de-condicionais-se-entao-senao">4.5 Teste de Condicionais SE-ENTAO-SENAO</h3>
+<pre class="hljs"><code><div>FACA numero SER 1.
+SE numero ENTAO
+    MOSTRE 10.
+SENAO
+    MOSTRE 20.
+FIM
+FACA zero SER 0.
+SE zero ENTAO
+    MOSTRE 30.
+SENAO
+    MOSTRE 40.
+FIM
+</div></code></pre>
+<p>Saída C gerada:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> numero = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (numero != <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, <span class="hljs-number">10</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, <span class="hljs-number">20</span>);
+    }
+    <span class="hljs-keyword">int</span> zero = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (zero != <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, <span class="hljs-number">30</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, <span class="hljs-number">40</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="46-teste-de-repeti%C3%A7%C3%A3o">4.6 Teste de Repetição</h3>
+<pre class="hljs"><code><div>FACA contador SER 0.
+REPITA 5 VEZES:
+    SOME contador COM 1.
+    MOSTRE contador.
+FIM
+</div></code></pre>
+<p>Saída C gerada:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> contador = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> _loop0 = <span class="hljs-number">0</span>; _loop0 &lt; <span class="hljs-number">5</span>; _loop0++) {
+        contador = contador + <span class="hljs-number">1</span>;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, contador);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="47-teste-complexo-combina%C3%A7%C3%A3o-de-estruturas">4.7 Teste Complexo (Combinação de Estruturas)</h3>
+<pre class="hljs"><code><div>FACA a SER 1.
+FACA b SER 2.
+FACA c SER 3.
+REPITA 2 VEZES:
+    SE a ENTAO
+        REPITA 2 VEZES:
+            SOME b COM c.
+            SE b ENTAO
+                MULTIPLIQUE c POR 2.
+            SENAO
+                SOME c COM 1.
+            FIM
+            MOSTRE b.
+            MOSTRE c.
+        FIM
+    SENAO
+        MOSTRE 0.
+    FIM
+    SOME a COM 1.
+FIM
+</div></code></pre>
+<h2 id="5-funcionalidades-implementadas">5. Funcionalidades Implementadas</h2>
+<ul>
+<li>✓ Atribuição de valores</li>
+<li>✓ Operações de soma (var-var, var-num, num-num)</li>
+<li>✓ Operações de multiplicação (var-var, var-num, num-num)</li>
+<li>✓ Estruturas de repetição</li>
+<li>✓ Condicionais SE-ENTAO com avaliação numérica</li>
+<li>✓ Condicionais SE-ENTAO-SENAO</li>
+<li>✓ MOSTRE operacao</li>
+<li>✓ Operações com números diretos</li>
+<li>✓ Estruturas aninhadas</li>
+<li>✓ Identificadores com números (ex: num1, var2)</li>
+</ul>
+<h2 id="6-como-executar">6. Como Executar</h2>
+<h3 id="61-requisitos">6.1 Requisitos</h3>
+<ul>
+<li>Python 3.x</li>
+<li>PLY (Python Lex-Yacc)</li>
+<li>GCC (para compilar o código C gerado)</li>
+</ul>
+<h3 id="62-instala%C3%A7%C3%A3o">6.2 Instalação</h3>
+<pre class="hljs"><code><div>pip install ply
+</div></code></pre>
+<h3 id="63-compila%C3%A7%C3%A3o">6.3 Compilação</h3>
+<pre class="hljs"><code><div>python compilador_matematica.py programa.matemag
+</div></code></pre>
+<h3 id="64-execu%C3%A7%C3%A3o-dos-testes">6.4 Execução dos Testes</h3>
+<pre class="hljs"><code><div>python run_tests.py pasta_testes
+</div></code></pre>
+<h2 id="7-conclus%C3%A3o">7. Conclusão</h2>
+<p>O compilador implementa todas as funcionalidades requeridas da linguagem Matemágica, incluindo as extensões solicitadas (SE-ENTAO-SENAO, multiplicação e MOSTRE operacao). A implementação foi validada através de um conjunto abrangente de testes que cobrem todos os aspectos da linguagem, incluindo casos básicos e complexos com estruturas aninhadas.</p>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+FACA num SER 0.
+REPITA 5 VEZES:
+    SOME num COM 1.
+    SE num ENTAO
+        MOSTRE num.
+    SENAO
+        MOSTRE 0.
+    FIM
+FIM

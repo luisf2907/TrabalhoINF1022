@@ -1,0 +1,21 @@
+FACA a SER 1.
+FACA b SER 2.
+FACA c SER 3.
+
+REPITA 2 VEZES:
+    SE a ENTAO
+        REPITA 2 VEZES:
+            SOME b COM c.
+            SE b ENTAO
+                MULTIPLIQUE c POR 2.
+            SENAO
+                SOME c COM 1.
+            FIM
+            MOSTRE b.
+            MOSTRE c.
+        FIM
+    SENAO
+        MOSTRE 0.
+    FIM
+    SOME a COM 1.
+FIM

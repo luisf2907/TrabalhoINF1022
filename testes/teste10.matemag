@@ -1,0 +1,15 @@
+FACA contador SER 1.
+FACA soma SER 0.
+FACA multiplicador SER 2.
+
+REPITA 3 VEZES:
+    SE contador ENTAO
+        SOME soma COM contador.
+        MULTIPLIQUE multiplicador POR 2.
+    SENAO
+        SOME soma COM 1.
+    FIM
+    MOSTRE soma.
+    MOSTRE multiplicador.
+    SOME contador COM 1.
+FIM

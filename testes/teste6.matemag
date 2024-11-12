@@ -1,0 +1,5 @@
+FACA contador SER 0.
+REPITA 5 VEZES:
+    SOME contador COM 1.
+    MOSTRE contador.
+FIM
